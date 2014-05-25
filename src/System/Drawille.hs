@@ -52,9 +52,7 @@ row c (maxX, minX) y = map helper vs
           helper Nothing  = ' '
 
 set :: Canvas -> (Int, Int) -> Canvas
-set c p = M.insertWith (.|.) k v c
-    where k = toPs p
-          v = toPx p
+set c p = M.insertWith (.|.) (toPs p) (toPx p) c
 
 get :: Canvas -> (Int, Int) -> Bool
 get c p = case M.lookup (toPs p) c of
