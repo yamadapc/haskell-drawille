@@ -40,10 +40,8 @@ empty = M.empty
 frame :: Canvas -> String
 frame c = unlines $ map (row c mX) [minY..maxY]
     where keys = M.keys c
-          xs = map fst keys
-          ys = map snd keys
-          mX = maximumMinimum xs
-          (maxY, minY) = maximumMinimum ys
+          mX = maximumMinimum $ map fst keys
+          (maxY, minY) = maximumMinimum $ map snd keys
 
 row :: Canvas -> (Int, Int) -> Int -> String
 row c (maxX, minX) y = map helper vs
