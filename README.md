@@ -9,6 +9,15 @@ to haskell.
 
 The implementation still has some quirks, but it works (and is efficient).
 
+## Installing
+
+This package is available on hackage as
+[`drawille`](http://hackage.haskell.org/package/drawille). You may install it
+with cabal with:
+```
+cabal install drawille
+```
+
 ## How to run tests
 
 ```
