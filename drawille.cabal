@@ -1,12 +1,12 @@
 Name:                   drawille
-Version:                0.1.0.1
+Version:                0.1.0.2
 Category:               System
 Author:                 Pedro Yamada <tacla.yamada@gmail.com>
 Maintainer:             Pedro Yamada <tacla.yamada@gmail.com>
 License:                GPL-3
 License-File:           LICENSE
 Synopsis:               A port of asciimoo's drawille to haskell
-Homepage:               https://github.com/yamadapc/drawille
+Homepage:               https://github.com/yamadapc/haskell-drawille
 Description:            A tiny library for drawing with braille.
 Cabal-Version:          >= 1.10
 Build-Type:             Simple
