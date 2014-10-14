@@ -20,7 +20,7 @@ Library
                       , containers >=0.5 && <0.6
 
 Executable senoid
-  Default-Language:    Haskell2010
+  Default-Language:     Haskell2010
   HS-Source-Dirs:       examples
                       , src
   Ghc-Options:          -Wall
@@ -28,6 +28,17 @@ Executable senoid
   Build-Depends:        base >=4 && <5
                       , containers >=0.5 && <0.6
                       , AC-Angle >=1.0 && <1.1
+
+Executable image2term
+  Default-Language:     Haskell2010
+  HS-Source-Dirs:       examples
+                      , src
+  Ghc-Options:          -Wall
+  Main-Is:              Image2Term.hs
+  Build-Depends:        base >=4 && <5
+                      , containers >=0.5 && <0.6
+                      , friday >=0.1 && <0.2
+                      , terminal-size >=0.2 && <1
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
