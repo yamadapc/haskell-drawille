@@ -1,7 +1,7 @@
 import Control.Monad (liftM)
 import qualified Data.Vector.Storable as VS
-import Vision.Image (Grey, GreyPixel, InterpolMethod(..), convert, load,
-                     manifestVector, resize)
+import Vision.Image (Grey, InterpolMethod(..), convert, load, manifestVector,
+                     resize)
 import Vision.Primitive (ix2)
 import Vision.Image.Storage (StorageImage)
 import System.Console.Terminal.Size
@@ -31,18 +31,14 @@ fromImage window image threshold = D.fromList $
 
   where greyImage = convert image :: Grey
         resizedImage = resizeToFitWindow window greyImage
-        imageVector = manifestVector $ resizedImage
+        imageVector = manifestVector resizedImage
 
-        coord i = undefined
-          where h = height window
-                w = width window
+        coord i = (i `rem` w, i `div` w)
+          where w = width window
 
-        helper idx pix m = if pix > fromIntegral threshold
-                               then (coord idx):m
+        helper idx pix m = if pix < fromIntegral threshold
+                               then coord idx : m
                                else m
-
-vecToList :: VS.Vector a -> [(a, a)]
-vecToList = undefined
 
 resizeToFitWindow :: Window Int -> Grey -> Grey
 resizeToFitWindow win = resize Bilinear (ix2 h w)
