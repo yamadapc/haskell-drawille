@@ -1,4 +1,5 @@
-module System.Drawille ( empty -- drawing API
+module System.Drawille ( Canvas
+                       , empty -- drawing API
                        , frame
                        , get
                        , set
