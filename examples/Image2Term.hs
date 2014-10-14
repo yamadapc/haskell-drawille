@@ -16,14 +16,17 @@ main = do
     errOrImage  <- load Nothing pathToImage
 
     case maybeWindow of
-        Just window ->
+        Just window -> do
+            let nwindow = window { height = 4 * height window
+                                 , width  = 2 * width window
+                                 }
             case errOrImage of
                 Left err ->
                     putStr $ show err
                 Right image ->
-                    putStr $ D.frame $ fromImage window image 128
+                    putStr $ D.frame $ fromImage nwindow image 128
         Nothing ->
-            putStr ""
+            putStr "Unable to get window size"
 
 fromImage :: Window Int -> StorageImage -> Int -> D.Canvas
 fromImage window image threshold = D.fromList $
@@ -33,7 +36,7 @@ fromImage window image threshold = D.fromList $
         resizedImage = resizeToFitWindow window greyImage
         imageVector = manifestVector resizedImage
 
-        coord i = (i `rem` w, i `div` w)
+        coord i = (i `rem` w, w - i `div` w)
           where w = width window
 
         helper idx pix m = if pix < fromIntegral threshold
@@ -41,6 +44,6 @@ fromImage window image threshold = D.fromList $
                                else m
 
 resizeToFitWindow :: Window Int -> Grey -> Grey
-resizeToFitWindow win = resize Bilinear (ix2 h w)
+resizeToFitWindow win = resize NearestNeighbor (ix2 h w)
   where h = height win
         w = width win
