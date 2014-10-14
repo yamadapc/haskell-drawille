@@ -39,6 +39,7 @@ Executable image2term
                       , containers >=0.5 && <0.6
                       , friday >=0.1 && <0.2
                       , terminal-size >=0.2 && <1
+                      , vector
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0

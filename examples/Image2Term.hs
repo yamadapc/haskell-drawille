@@ -1,5 +1,7 @@
 import Control.Monad (liftM)
-import Vision.Image (Grey, GreyPixel, InterpolMethod(..), convert, load, resize)
+import qualified Data.Vector.Storable as VS
+import Vision.Image (Grey, GreyPixel, InterpolMethod(..), convert, load,
+                     manifestVector, resize)
 import Vision.Primitive (ix2)
 import Vision.Image.Storage (StorageImage)
 import System.Console.Terminal.Size
@@ -24,11 +26,23 @@ main = do
             putStr ""
 
 fromImage :: Window Int -> StorageImage -> Int -> D.Canvas
-fromImage window image threshold = undefined -- D.fromList $ map pixToTuple resizedImage
+fromImage window image threshold = D.fromList $
+                                   VS.ifoldr helper [] imageVector
+
   where greyImage = convert image :: Grey
         resizedImage = resizeToFitWindow window greyImage
-        pixToTuple :: GreyPixel -> (Int, Int)
-        pixToTuple = undefined
+        imageVector = manifestVector $ resizedImage
+
+        coord i = undefined
+          where h = height window
+                w = width window
+
+        helper idx pix m = if pix > fromIntegral threshold
+                               then (coord idx):m
+                               else m
+
+vecToList :: VS.Vector a -> [(a, a)]
+vecToList = undefined
 
 resizeToFitWindow :: Window Int -> Grey -> Grey
 resizeToFitWindow win = resize Bilinear (ix2 h w)
