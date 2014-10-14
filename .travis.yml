@@ -1,13 +1,10 @@
 language: haskell
 ghc: 7.8
 before_install:
-<<<<<<< Updated upstream
-  - apt-get install libdevil-dev
-=======
-  - sudo apt-get install libdevil-dev
->>>>>>> Stashed changes
+- sudo apt-get update
+- sudo apt-get install libdevil-dev
 after_success:
-  - .ci/deploy-documentation.sh
+- ".ci/deploy-documentation.sh"
 env:
   global:
-    secure: tjw5UjPcmvHtprDy2wmVEMQS6VA50XYE5XrWjreBedEYzYFTrtuPHKBzOwkQNFIOxw3/VZTRApdikOuobwH3uFRhQ0WRtl24iOExrg6/JPA9Q1WYYPjZgQsCxDy1d2cMnkH4595B10YwvekcAxHczue2T45GXjFvzVN3c8XcHRI=
+    secure: AhqyQoTcZqiBAVgp6KN1x/h0XBNzziFObiNcsLL/xwhltyuv4YKLdp5IWyPkO+NKsoFW6G2g3yhxkVuYGaKCTUHaYNowOXIHiFIT8TFU0aC4B7t3w9U/D2GDnQCiYL3MgwE5ESVA9YeBYET3yd8+9Ar2yx/QRpJIBKPq5CLUK9w=

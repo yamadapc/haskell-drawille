@@ -4,7 +4,7 @@
 if [ "$TRAVIS_REPO_SLUG" == "yamadapc/haskell-drawille" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
   echo -e "Generating documentation...\n"
   cabal haddock
-  cp -Rf dist/doc/html/haskell-drawille/ $HOME/haskell-drawille-doc/
+  cp -Rf dist/doc/html/drawille/ $HOME/haskell-drawille-doc/
   echo -e "Publishing documentation...\n"
   cd $HOME
   git config --global user.email "travis@travis-ci.org"
