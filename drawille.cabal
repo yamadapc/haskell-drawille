@@ -1,8 +1,9 @@
 Name:                   drawille
-Version:                0.1.0.2
+Version:                0.1.0.3
 Category:               System
 Author:                 Pedro Yamada <tacla.yamada@gmail.com>
 Maintainer:             Pedro Yamada <tacla.yamada@gmail.com>
+Copyright:              (c) Pedro Yamada
 License:                GPL-3
 License-File:           LICENSE
 Synopsis:               A port of asciimoo's drawille to haskell
