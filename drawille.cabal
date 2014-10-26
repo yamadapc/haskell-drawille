@@ -15,7 +15,7 @@ Build-Type:             Simple
 Library
   Default-Language:     Haskell2010
   HS-Source-Dirs:       src
-  GHC-Options:          -Wall
+  GHC-Options:          -Wall -threaded -O3
   Exposed-Modules:      System.Drawille
   Build-Depends:        base >=4 && <5
                       , containers >=0.5 && <0.6
@@ -24,7 +24,7 @@ Executable senoid
   Default-Language:     Haskell2010
   HS-Source-Dirs:       examples
                       , src
-  Ghc-Options:          -Wall
+  Ghc-Options:          -Wall -O3
   Main-Is:              Senoid.hs
   Build-Depends:        base >=4 && <5
                       , containers >=0.5 && <0.6
@@ -34,7 +34,7 @@ Executable image2term
   Default-Language:     Haskell2010
   HS-Source-Dirs:       examples
                       , src
-  Ghc-Options:          -Wall
+  Ghc-Options:          -Wall -threaded -O3
   Main-Is:              Image2Term.hs
   Build-Depends:        base >=4 && <5
                       , containers >=0.5 && <0.6
