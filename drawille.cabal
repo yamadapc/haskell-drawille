@@ -1,5 +1,5 @@
 Name:                   drawille
-Version:                0.1.0.3
+Version:                0.1.0.4
 Category:               System
 Author:                 Pedro Yamada <tacla.yamada@gmail.com>
 Maintainer:             Pedro Yamada <tacla.yamada@gmail.com>
@@ -11,6 +11,14 @@ Homepage:               https://github.com/yamadapc/haskell-drawille
 Description:            A tiny library for drawing with braille.
 Cabal-Version:          >= 1.10
 Build-Type:             Simple
+
+Flag no-tests
+    Description:        Don't build test suites
+    Default:            False
+
+Flag examples
+    Description:        Build examples
+    Default:            False
 
 Library
   Default-Language:     Haskell2010
@@ -29,6 +37,8 @@ Executable senoid
   Build-Depends:        base >=4 && <5
                       , containers >=0.5 && <0.6
                       , AC-Angle >=1.0 && <1.1
+  if !flag(examples)
+    Buildable: False
 
 Executable image2term
   Default-Language:     Haskell2010
@@ -41,6 +51,8 @@ Executable image2term
                       , friday >=0.1 && <0.2
                       , terminal-size >=0.2 && <1
                       , vector
+  if !flag(examples)
+    Buildable: False
 
 Test-Suite spec
   Type:                 exitcode-stdio-1.0
@@ -53,6 +65,8 @@ Test-Suite spec
                       , hspec >=1.11 && <1.12
                       , QuickCheck >=2.6 && <2.7
                       , containers >=0.5 && <0.6
+  if flag(no-tests)
+    Buildable: False
 
 Source-Repository head
   Type:                 git
