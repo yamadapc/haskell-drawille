@@ -28,8 +28,18 @@ The haddock documentation is available in
 [our github pages website](https://yamadapc.github.io/haskell-drawille/),
 to which it is deployed continously with Travis CI
 
-## How to run tests
+## Examples
 
+To compile the examples, use the flag `examples`, with:
+```
+cabal install drawille -fexamples
+```
+
+### `image2term`
+Converts an image into a drawille canvas and displays the result on the screen.
+![image2term Screenshot](image2term-screenshot.png)
+
+## How to run tests
 ```
 cabal configure --enable-tests && cabal build && cabal test
 ```
