@@ -34,10 +34,12 @@ Executable senoid
                       , src
   Ghc-Options:          -Wall -O3
   Main-Is:              Senoid.hs
-  Build-Depends:        base >=4 && <5
-                      , containers >=0.5 && <0.6
-                      , AC-Angle >=1.0 && <1.1
-  if !flag(examples)
+  if flag(examples)
+    Build-Depends:        base >=4 && <5
+                        , containers >=0.5 && <0.6
+                        , AC-Angle >=1.0 && <1.1
+    Buildable: True
+  else
     Buildable: False
 
 Executable image2term
@@ -46,12 +48,14 @@ Executable image2term
                       , src
   Ghc-Options:          -Wall -threaded -O3
   Main-Is:              Image2Term.hs
-  Build-Depends:        base >=4 && <5
-                      , containers >=0.5 && <0.6
-                      , friday >=0.1 && <0.2
-                      , terminal-size >=0.2 && <1
-                      , vector
-  if !flag(examples)
+  if flag(examples)
+    Build-Depends:        base >=4 && <5
+                        , containers >=0.5 && <0.6
+                        , friday >=0.1 && <0.2
+                        , terminal-size >=0.2 && <1
+                        , vector
+    Buildable: True
+  else
     Buildable: False
 
 Test-Suite spec
@@ -61,11 +65,13 @@ Test-Suite spec
                       , test
   Ghc-Options:          -Wall
   Main-Is:              Spec.hs
-  Build-Depends:        base >=4 && <5
-                      , hspec >=1.11 && <1.12
-                      , QuickCheck >=2.6 && <2.7
-                      , containers >=0.5 && <0.6
-  if flag(no-tests)
+  if !flag(no-tests)
+    Build-Depends:        base >=4 && <5
+                        , hspec >=1.11 && <1.12
+                        , QuickCheck >=2.6 && <2.7
+                        , containers >=0.5 && <0.6
+    Buildable: True
+  else
     Buildable: False
 
 Source-Repository head
