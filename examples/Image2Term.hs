@@ -122,13 +122,12 @@ fromImage window greyImage threshold invert = VS.ifoldr accCanvas' D.empty image
 -- |
 -- Gets a canvas coordinate given a canvas' width and a index to the flat
 -- vector representation of an image's pixel matrix.
-{-# INLINEABLE coord #-}
 coord :: Int -> Int -> (Int, Int)
 coord w i = (i `rem` w, w - i `div` w)
+{-# INLINEABLE coord #-}
 
 -- |
 -- Accumulates pixels into a canvas.
-{-# INLINEABLE accCanvas #-}
 accCanvas :: Int -> Int -> Bool -> Int -> GreyPixel -> D.Canvas -> D.Canvas
 accCanvas threshold winW invert idx pix m =
     let withinThreshold = pix < fromIntegral threshold
@@ -136,6 +135,7 @@ accCanvas threshold winW invert idx pix m =
       in if shouldSet
              then D.set m (coord winW idx)
              else m
+{-# INLINEABLE accCanvas #-}
 
 -- |
 -- Resizes an image to fit a window.
