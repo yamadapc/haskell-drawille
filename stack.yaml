@@ -1,0 +1,9 @@
+flags: {}
+extra-package-dbs: []
+packages:
+- '.'
+extra-deps:
+- AC-Angle-1.0
+- ratio-int-0.1.2
+- friday-0.2.2.0
+resolver: lts-3.17
