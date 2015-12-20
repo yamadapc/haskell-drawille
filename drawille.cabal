@@ -51,7 +51,7 @@ Executable image2term
   if flag(examples)
     Build-Depends:        base >=4 && <5
                         , containers >=0.5
-                        , friday >=0.1
+                        , friday >=0.1 && <0.2
                         , terminal-size >=0.2
                         , vector
     Buildable: True
