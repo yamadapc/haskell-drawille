@@ -67,7 +67,7 @@ Test-Suite spec
   Main-Is:              Spec.hs
   if !flag(no-tests)
     Build-Depends:        base >=4 && <5
-                        , hspec >=1.11 && <1.12
+                        , hspec >=1.11 && <2.3
                         , QuickCheck >=2.6 && <3
                         , containers >=0.5 && <0.6
     Buildable: True
