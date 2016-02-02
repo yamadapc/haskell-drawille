@@ -50,3 +50,6 @@ cabal configure --enable-tests && cabal build && cabal test
 
 This code is licensed under the GPL3 license. See [LICENSE](LICENSE) for more
 information.
+
+## Donations
+Would you like to buy me a beer? Send bitcoin to 3JjxJydvoJjTrhLL86LGMc8cNB16pTAF3y
