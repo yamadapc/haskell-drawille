@@ -1,5 +1,5 @@
 name: drawille
-version: '0.1.0.6'
+version: '0.1.1.0'
 synopsis: A port of asciimoo's drawille to haskell
 description: A tiny library for drawing with braille.
 category: System
