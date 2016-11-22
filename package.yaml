@@ -1,5 +1,5 @@
 name: drawille
-version: '0.1.1.0'
+version: '0.1.2.0'
 synopsis: A port of asciimoo's drawille to haskell
 description: A tiny library for drawing with braille.
 category: System
@@ -12,10 +12,6 @@ github: yamadapc/haskell-drawille
 
 library:
   source-dirs: src
-  ghc-options:
-  - -Wall
-  - -threaded
-  - -O3
   exposed-modules:
   - System.Drawille
   dependencies:
@@ -29,6 +25,7 @@ executables:
     - examples
     - src
     ghc-options:
+    - -threaded
     - -Wall
     - -O3
     when:
