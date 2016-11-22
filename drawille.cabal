@@ -1,79 +1,103 @@
-Name:                   drawille
-Version:                0.1.0.6
-Category:               System
-Author:                 Pedro Yamada <tacla.yamada@gmail.com>
-Maintainer:             Pedro Yamada <tacla.yamada@gmail.com>
-Copyright:              (c) Pedro Yamada
-License:                GPL-3
-License-File:           LICENSE
-Synopsis:               A port of asciimoo's drawille to haskell
-Homepage:               https://github.com/yamadapc/haskell-drawille
-Description:            A tiny library for drawing with braille.
-Cabal-Version:          >= 1.10
-Build-Type:             Simple
+-- This file has been generated from package.yaml by hpack version 0.14.0.
+--
+-- see: https://github.com/sol/hpack
 
-Flag no-tests
-    Description:        Don't build test suites
-    Default:            False
+name:                   drawille
+version:                0.1.0.6
+synopsis:               A port of asciimoo's drawille to haskell
+description:            A tiny library for drawing with braille.
+category:               System
+homepage:               https://github.com/yamadapc/haskell-drawille#readme
+bug-reports:            https://github.com/yamadapc/haskell-drawille/issues
+author:                 Pedro Yamada <tacla.yamada@gmail.com>
+maintainer:             Pedro Yamada <tacla.yamada@gmail.com>
+copyright:              (c) Pedro Yamada
+license:                GPL-3
+license-file:           LICENSE
+build-type:             Simple
+cabal-version:          >= 1.10
 
-Flag examples
-    Description:        Build examples
-    Default:            False
+source-repository head
+  type: git
+  location: https://github.com/yamadapc/haskell-drawille
 
-Library
-  Default-Language:     Haskell2010
-  HS-Source-Dirs:       src
-  GHC-Options:          -Wall -threaded -O3
-  Exposed-Modules:      System.Drawille
-  Build-Depends:        base >=4 && <5
-                      , containers >=0.5 && <0.6
+flag examples
+  description: Build examples
+  manual: False
+  default: False
 
-Executable senoid
-  Default-Language:     Haskell2010
-  HS-Source-Dirs:       examples
-                      , src
-  Ghc-Options:          -Wall -O3
-  Main-Is:              Senoid.hs
+flag no-tests
+  description: Don't build test suites
+  manual: False
+  default: False
+
+library
+  hs-source-dirs:
+      src
+  ghc-options: -Wall -threaded -O3
+  build-depends:
+      base >=4 && <5
+    , containers >=0.5 && <0.6
+  exposed-modules:
+      System.Drawille
+  other-modules:
+      Paths_drawille
+  default-language: Haskell2010
+
+executable image2term
+  main-is: Image2Term.hs
+  hs-source-dirs:
+      examples
+    , src
+  ghc-options: -Wall -threaded -O3
   if flag(examples)
-    Build-Depends:        base >=4 && <5
-                        , containers >=0.5 && <0.6
-                        , AC-Angle >=1.0 && <1.1
-    Buildable: True
+    build-depends:
+        base >=4 && <5
+      , containers >=0.5
+      , friday >=0.1 && <0.2
+      , terminal-size >=0.2
+      , vector
   else
-    Buildable: False
+    buildable: False
+  other-modules:
+      Senoid
+      System.Drawille
+  default-language: Haskell2010
 
-Executable image2term
-  Default-Language:     Haskell2010
-  HS-Source-Dirs:       examples
-                      , src
-  Ghc-Options:          -Wall -threaded -O3
-  Main-Is:              Image2Term.hs
+executable senoid
+  main-is: Senoid.hs
+  hs-source-dirs:
+      examples
+    , src
+  ghc-options: -Wall -O3
   if flag(examples)
-    Build-Depends:        base >=4 && <5
-                        , containers >=0.5
-                        , friday >=0.1 && <0.2
-                        , terminal-size >=0.2
-                        , vector
-    Buildable: True
+    build-depends:
+        base >=4 && <5
+      , containers >=0.5 && <0.6
+      , AC-Angle >=1.0 && <1.1
   else
-    Buildable: False
+    buildable: False
+  other-modules:
+      Image2Term
+      System.Drawille
+  default-language: Haskell2010
 
-Test-Suite spec
-  Type:                 exitcode-stdio-1.0
-  Default-Language:     Haskell2010
-  Hs-Source-Dirs:       src
-                      , test
-  Ghc-Options:          -Wall
-  Main-Is:              Spec.hs
-  if !flag(no-tests)
-    Build-Depends:        base >=4 && <5
-                        , hspec >=1.11 && <2.4
-                        , QuickCheck >=2.6
-                        , containers >=0.5 && <0.6
-    Buildable: True
+test-suite spec
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      src
+    , test
+  ghc-options: -Wall
+  if !(flag(no-tests))
+    build-depends:
+        base >=4 && <5
+      , hspec >=1.11 && <2.4
+      , QuickCheck >=2.6
+      , containers >=0.5 && <0.6
   else
-    Buildable: False
-
-Source-Repository head
-  Type:                 git
-  Location:             git://github.com/yamadapc/haskell-drawille
+    buildable: False
+  other-modules:
+      System.Drawille
+      DrawilleSpec
+  default-language: Haskell2010

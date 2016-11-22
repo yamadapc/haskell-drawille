@@ -1,0 +1,91 @@
+name: drawille
+version: '0.1.0.6'
+synopsis: A port of asciimoo's drawille to haskell
+description: A tiny library for drawing with braille.
+category: System
+author: Pedro Yamada <tacla.yamada@gmail.com>
+maintainer: Pedro Yamada <tacla.yamada@gmail.com>
+copyright: (c) Pedro Yamada
+license: GPL-3
+
+github: yamadapc/haskell-drawille
+
+library:
+  source-dirs: src
+  ghc-options:
+  - -Wall
+  - -threaded
+  - -O3
+  exposed-modules:
+  - System.Drawille
+  dependencies:
+  - base >=4 && <5
+  - containers >=0.5 && <0.6
+
+executables:
+  senoid:
+    main: Senoid.hs
+    source-dirs:
+    - examples
+    - src
+    ghc-options:
+    - -Wall
+    - -O3
+    when:
+    - condition: flag(examples)
+      then:
+        dependencies:
+        - base >=4 && <5
+        - containers >=0.5 && <0.6
+        - AC-Angle >=1.0 && <1.1
+      else:
+        buildable: false
+
+  image2term:
+    main: Image2Term.hs
+    source-dirs:
+    - examples
+    - src
+    ghc-options:
+    - -Wall
+    - -threaded
+    - -O3
+    when:
+    - condition: flag(examples)
+      then:
+        dependencies:
+        - base >=4 && <5
+        - containers >=0.5
+        - friday >=0.1 && <0.2
+        - terminal-size >=0.2
+        - vector
+      else:
+        buildable: false
+
+tests:
+  spec:
+    main: Spec.hs
+    source-dirs:
+    - src
+    - test
+    ghc-options: -Wall
+    when:
+    - condition: ! '!(flag(no-tests))'
+      then:
+        dependencies:
+        - base >=4 && <5
+        - hspec >=1.11 && <2.4
+        - QuickCheck >=2.6
+        - containers >=0.5 && <0.6
+      else:
+        buildable: false
+
+flags:
+  examples:
+    description: Build examples
+    manual: false
+    default: false
+  no-tests:
+    description: Don't build test suites
+    manual: false
+    default: false
