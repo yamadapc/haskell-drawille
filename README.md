@@ -1,9 +1,7 @@
 drawille
 ========
-[![Build Status](https://travis-ci.org/yamadapc/haskell-drawille.svg?branch=master)](https://travis-ci.org/yamadapc/haskell-drawille)
 [![Hackage](https://img.shields.io/hackage/v/drawille.svg)](https://hackage.haskell.org/package/drawille)
 [![Dependencies Status](http://img.shields.io/hackage-deps/v/drawille.svg)](http://packdeps.haskellers.com/feed?needle=drawille)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/yamadapc/haskell-drawille?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 - - -
 
 A tiny library to write to the terminal using Braille characters, a port of
