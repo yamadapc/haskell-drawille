@@ -8,4 +8,4 @@ extra-deps:
 - hspec-discover-2.3.2
 - hspec-expectations-0.8.2
 - call-stack-0.1.0
-resolver: nightly-2016-11-19
+resolver: lts-21.9
